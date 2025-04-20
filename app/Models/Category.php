@@ -5,22 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class Category extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'slug',
         'title',
-        'thumbnail',
     ];
 
     protected static function boot(): void
     {
         parent::boot();
 
-        static::creating(function (Brand $brand) {
-            $brand->slug = $brand->slug ?? str($brand->title)->slug();
+        static::creating(function (Category $category) {
+            $category->slug = $category->slug ?? str($category->title)->slug();
         });
     }
 }
